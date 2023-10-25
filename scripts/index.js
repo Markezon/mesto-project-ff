@@ -8,17 +8,24 @@ function deleteCard(ev) {
   deleteItem.remove();
 }
 
-function addCard(i, deleteCard) {
+function createCard(cardData, deleteCard) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__image").src = i.link;
-  cardElement.querySelector(".card__title").textContent = i.name;
-  cardElement.querySelector(".card__image").alt = i.alt;
-  placesList.append(cardElement);
+  const cardImage = cardElement.querySelector(".card__image");
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.alt;
+  cardElement.querySelector(".card__title").textContent = cardData.name;
 
   const deleteButton = cardElement.querySelector(".card__delete-button");
   deleteButton.addEventListener("click", deleteCard);
+
+  return cardElement;
 }
 
-initialCards.forEach(function (i) {
-  addCard(i, deleteCard);
+function addCard(card, container) {
+  container.prepend(card);
+}
+
+initialCards.forEach(function (cardData) {
+  const card = createCard(cardData, deleteCard);
+  addCard(card, placesList);
 });
