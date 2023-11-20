@@ -1,15 +1,14 @@
-import { showImage, img, imgTitle } from "./modal.js";
+import { showImage } from "./modal.js";
+import { placesList, cardTemplate } from "./const.js";
 
-export const placesList = document.querySelector(".places__list");
-export const cardTemplate = document.querySelector("#card-template").content;
 
 export function deleteCard(ev) {
-  const deleteItem = ev.target.closest(".card");
-  deleteItem.remove();
+  const itemDelete = ev.target.closest(".card");
+  itemDelete.remove();
 }
 
 export function like(evt) {
-  let target = evt.target;
+  const target = evt.target;
   target.classList.toggle("card__like-button_is-active");
 }
 
@@ -20,8 +19,8 @@ export function createCard(cardData, deleteCard) {
   cardImage.alt = cardData.alt;
   cardElement.querySelector(".card__title").textContent = cardData.name;
 
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", deleteCard);
+  const buttonDelete = cardElement.querySelector(".card__delete-button");
+  buttonDelete.addEventListener("click", deleteCard);
 
   const cardLike = cardElement.querySelector(".card__like-button");
   cardLike.addEventListener("click", (evt) => like(evt));
@@ -33,4 +32,9 @@ export function createCard(cardData, deleteCard) {
 
 export function addCard(card, container) {
   container.prepend(card);
+}
+
+export function CreateNewCard(cardData) {
+  const card = createCard(cardData, deleteCard);
+  addCard(card, placesList);
 }

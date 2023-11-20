@@ -1,71 +1,63 @@
 import "./pages/index.css"; // добавьте импорт главного файла стилей
 
+import {
+  popupImage,
+  buttonEdit,
+  popupEdit,
+  buttonAdd,
+  popupNewCard,
+  popupCloseButtons,
+  formProfileElement,
+  nameInput,
+  jobInput,
+  profileTitle,
+  profileDescription,
+  formNewCard,
+  newCardNameInput,
+  newCardUrlInput,
+} from "./scripts/const.js";
 import { initialCards } from "./scripts/cards.js";
 
 import {
-  placesList,
-  /*   cardTemplate, */
   deleteCard,
   createCard,
-  addCard,
-  /*   like, */
+  CreateNewCard,
 } from "./scripts/cardsFunction.js";
 
 import {
   openModal,
   closeModal,
-  /*   closeModalOver, */
-  closeOnOverlay,
-  /*   modalEscClose, */
-  popupCrossClose,
-  popupImage,
-  /*   popupEscClose, */
+  closePopupOnCross,
+  setOverlayCloseListener,
 } from "./scripts/modal.js";
-
-function renderCard(arr) {
-  arr.forEach(function (cardData) {
-    const card = createCard(cardData, deleteCard);
-    addCard(card, placesList);
-  });
+//
+function renderCards(arr) {
+  arr.forEach(CreateNewCard);
 }
 
-renderCard(initialCards);
+renderCards(initialCards);
 
-/////popup
-const editButton = document.querySelector(".profile__edit-button");
-const popupEdit = document.querySelector(".popup_type_edit");
+///popup open
+buttonEdit.addEventListener("click", () => {
+  openModal(popupEdit);
+  ///автозаполнение полей карточки
+  jobInput.value = profileDescription.textContent;
+  nameInput.value = profileTitle.textContent;
+});
 
-const addButton = document.querySelector(".profile__add-button");
-const popupNewCard = document.querySelector(".popup_type_new-card");
+buttonAdd.addEventListener("click", () => openModal(popupNewCard));
 
-const popupCloseButton = document.querySelectorAll(".popup__close");
+///popup close
+popupCloseButtons.forEach((el) => {
+  el.addEventListener("click", () => closePopupOnCross());
+});
 
-editButton.addEventListener("click", () => openModal(popupEdit));
-addButton.addEventListener("click", () => openModal(popupNewCard));
-
-popupCloseButton.forEach(popupCrossClose);
-closeOnOverlay(popupEdit);
-closeOnOverlay(popupNewCard);
-closeOnOverlay(popupImage);
-////
-
-/////////////редактирование
-
-const formElement = document.querySelector(".popup__content");
-const nameInput = formElement.querySelector(".popup__input_type_name");
-const jobInput = formElement.querySelector(".popup__input_type_description");
-
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-
-const form = document.querySelector(".popup__content");
-
-///автозаполнение полей карточки
-jobInput.value = profileDescription.textContent;
-nameInput.value = profileTitle.textContent;
+setOverlayCloseListener(popupEdit);
+setOverlayCloseListener(popupNewCard);
+setOverlayCloseListener(popupImage);
 
 // Обработчик «отправки» формы
-function handleFormSubmit(evt) {
+function editProfileFormSubmit(evt) {
   evt.preventDefault();
 
   profileTitle.textContent = nameInput.value.trim();
@@ -74,32 +66,31 @@ function handleFormSubmit(evt) {
   closeModal(popupEdit);
 }
 
-form.addEventListener("submit", (evt) => handleFormSubmit(evt));
+formProfileElement.addEventListener("submit", (evt) =>
+  editProfileFormSubmit(evt)
+);
 
 //add card
-
-const formNewCard = document.querySelector(".popup__content2");
-const NewCardNameInput = formNewCard.querySelector(
-  ".popup__input_type_card-name"
-);
-const NewCardUrlInput = formNewCard.querySelector(".popup__input_type_url");
 
 function addNewCard(evt) {
   evt.preventDefault();
 
-  const newCard = [{}];
-  newCard[0].name = NewCardNameInput.value;
-  newCard[0].link = NewCardUrlInput.value;
-  newCard[0].alt = "";
+  const newCard = {
+    name: newCardNameInput.value,
+    link: newCardUrlInput.value,
+    alt: "",
+  };
+
   ///самая элементарная проверка
   if (
-    NewCardNameInput.value.trim() !== "" &&
-    NewCardUrlInput.value.trim() !== ""
+    newCardNameInput.value.trim() !== "" &&
+    newCardUrlInput.value.trim() !== ""
   ) {
-    renderCard(newCard);
+    createCard(newCard, deleteCard);
+    CreateNewCard(newCard);
     closeModal(popupNewCard);
-    NewCardNameInput.value = "";
-    NewCardUrlInput.value = "";
+    newCardNameInput.value = "";
+    newCardUrlInput.value = "";
   }
 }
 
