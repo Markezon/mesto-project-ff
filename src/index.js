@@ -78,7 +78,7 @@ function addNewCard(evt) {
     alt: newCardNameInput.value,
   };
 
-  ///самая элементарная проверка
+  ///самая элементарная проверка///
   if (
     newCardNameInput.value.trim() !== "" &&
     newCardUrlInput.value.trim() !== ""
