@@ -18,11 +18,7 @@ import {
 } from "./scripts/const.js";
 import { initialCards } from "./scripts/cards.js";
 
-import {
-  deleteCard,
-  createCard,
-  CreateNewCard,
-} from "./scripts/cardsFunction.js";
+import { deleteCard, createCard, renderCard } from "./scripts/cardsFunction.js";
 
 import {
   openModal,
@@ -32,7 +28,7 @@ import {
 } from "./scripts/modal.js";
 //
 function renderCards(arr) {
-  arr.forEach(CreateNewCard);
+  arr.forEach(renderCard);
 }
 
 renderCards(initialCards);
@@ -52,6 +48,7 @@ popupCloseButtons.forEach((el) => {
   el.addEventListener("click", () => closePopupOnCross());
 });
 
+/////
 setOverlayCloseListener(popupEdit);
 setOverlayCloseListener(popupNewCard);
 setOverlayCloseListener(popupImage);
@@ -86,8 +83,7 @@ function addNewCard(evt) {
     newCardNameInput.value.trim() !== "" &&
     newCardUrlInput.value.trim() !== ""
   ) {
-    createCard(newCard, deleteCard);
-    CreateNewCard(newCard);
+    renderCard(newCard);
     closeModal(popupNewCard);
     newCardNameInput.value = "";
     newCardUrlInput.value = "";

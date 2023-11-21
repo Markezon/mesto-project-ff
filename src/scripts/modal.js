@@ -1,4 +1,4 @@
-import { popupImage, popupModal, img, imgTitle } from "./const.js";
+import { popupImage, openedModal, popupModal, img, imgTitle } from "./const.js";
 
 export function openModal(popupName) {
   popupName.classList.add("popup_is-opened");
@@ -11,11 +11,9 @@ export function closeModal(popupName) {
 }
 
 export function closePopupOnCross() {
-  for (let i = 0; i < popupModal.length; i++) {
-    if (popupModal[i].classList.contains("popup_is-opened")) {
-      popupModal[i].classList.remove("popup_is-opened");
-    }
-  }
+  const openedModal = document.querySelector(".popup_is-opened");
+  openedModal.classList.remove("popup_is-opened");
+  window.removeEventListener("keydown", popupEscClose);
 }
 
 export function closeModalOver(evt) {

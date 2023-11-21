@@ -1,7 +1,6 @@
 import { showImage } from "./modal.js";
 import { placesList, cardTemplate } from "./const.js";
 
-
 export function deleteCard(ev) {
   const itemDelete = ev.target.closest(".card");
   itemDelete.remove();
@@ -34,7 +33,7 @@ export function addCard(card, container) {
   container.prepend(card);
 }
 
-export function CreateNewCard(cardData) {
+export function renderCard(cardData) {
   const card = createCard(cardData, deleteCard);
   addCard(card, placesList);
 }
