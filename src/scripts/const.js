@@ -2,7 +2,6 @@ export const placesList = document.querySelector(".places__list");
 export const cardTemplate = document.querySelector("#card-template").content;
 
 export const popupImage = document.querySelector(".popup_type_image");
-export const popupModal = document.querySelectorAll(".popup");
 export const img = document.querySelector(".popup__image");
 export const imgTitle = document.querySelector(".popup__caption");
 /////

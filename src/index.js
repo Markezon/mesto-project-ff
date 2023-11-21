@@ -23,8 +23,8 @@ import { deleteCard, createCard, renderCard } from "./scripts/cardsFunction.js";
 import {
   openModal,
   closeModal,
-  closePopupOnCross,
   setOverlayCloseListener,
+  popupEscClose,
 } from "./scripts/modal.js";
 //
 function renderCards(arr) {
@@ -45,7 +45,7 @@ buttonAdd.addEventListener("click", () => openModal(popupNewCard));
 
 ///popup close
 popupCloseButtons.forEach((el) => {
-  el.addEventListener("click", () => closePopupOnCross());
+  el.addEventListener("click", () => closeModal());
 });
 
 /////
@@ -54,13 +54,13 @@ setOverlayCloseListener(popupNewCard);
 setOverlayCloseListener(popupImage);
 
 // Обработчик «отправки» формы
+
 function editProfileFormSubmit(evt) {
   evt.preventDefault();
 
   profileTitle.textContent = nameInput.value.trim();
   profileDescription.textContent = jobInput.value.trim();
-
-  closeModal(popupEdit);
+  closeModal();
 }
 
 formProfileElement.addEventListener("submit", (evt) =>
@@ -75,7 +75,7 @@ function addNewCard(evt) {
   const newCard = {
     name: newCardNameInput.value,
     link: newCardUrlInput.value,
-    alt: "",
+    alt: newCardNameInput.value,
   };
 
   ///самая элементарная проверка
@@ -84,7 +84,7 @@ function addNewCard(evt) {
     newCardUrlInput.value.trim() !== ""
   ) {
     renderCard(newCard);
-    closeModal(popupNewCard);
+    closeModal();
     newCardNameInput.value = "";
     newCardUrlInput.value = "";
   }
