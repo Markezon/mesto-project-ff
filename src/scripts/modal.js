@@ -15,8 +15,7 @@ export function closeModal() {
 
 export function closeModalOver(evt) {
   if (evt.target.classList.contains("popup")) {
-    evt.target.classList.remove("popup_is-opened");
-    window.removeEventListener("keydown", popupEscClose);
+    closeModal();
   }
 }
 
