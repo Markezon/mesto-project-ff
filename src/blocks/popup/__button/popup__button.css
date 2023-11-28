@@ -19,12 +19,14 @@
   cursor: pointer;
 }
 
-.popup__button_inactive {
-  background: #818080;
+.popup__button_disabled {
+  background: #f6f6f6;
+  color: #c4c4c4;
+  border: 1px solid #c4c4c4;
 }
 
-.popup__button_inactive:hover {
-  background: #818080;
+.popup__button_disabled:hover {
+  background: #fff;
   cursor: not-allowed;
 }
 

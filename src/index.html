@@ -51,6 +51,9 @@
               placeholder="Имя"
               required
               minlength="2"
+              maxlength="40"
+              pattern="^[a-zA-Zа-яА-Я\sёЁ\-]+$"
+              data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы."
             />
             <span class="popup__input-error name-input-error"></span>
             <input
@@ -61,6 +64,9 @@
               placeholder="Занятие"
               required
               minlength="2"
+              maxlength="200"
+              pattern="^[a-zA-Zа-яА-Я\sёЁ\-]+$"
+              data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы."
             />
             <span class="popup__input-error description-input-error"></span>
             <button type="submit" class="button popup__button">
@@ -82,6 +88,9 @@
               placeholder="Название"
               required
               minlength="2"
+              maxlength="30"
+              pattern="^[a-zA-Zа-яА-Я\sёЁ\-]+$"
+              data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы."
             />
             <span class="popup__input-error type_card-name-input-error"></span>
             <input
@@ -91,7 +100,6 @@
               id="type_url-input"
               placeholder="Ссылка на картинку"
               required
-              minlength="2"
             />
             <span class="popup__input-error type_url-input-error"></span>
             <button type="submit" class="button popup__button">
