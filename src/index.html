@@ -20,10 +20,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <div
+          <!--           <div
             class="profile__image"
             style="background-image: url('<%=require('./images/avatar.jpg')%>')"
-          ></div>
+          ></div> -->
+          <div class="profile__image_cover">
+            <div class="profile__image-overlay"></div>
+            <div class="profile__image"></div>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -75,11 +79,12 @@
           </form>
         </div>
       </div>
+
       <div class="popup popup_type_new-card">
         <div class="popup__content popup__new-card">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Новое место</h3>
-          <form class="popup__form" name="new-place novalidate">
+          <form class="popup__form" novalidate name="new-place">
             <input
               type="text"
               name="place-name"
@@ -115,6 +120,27 @@
           <p class="popup__caption"></p>
         </div>
       </div>
+
+      <div class="popup popup_type_avatar">
+        <div class="popup__content popup__avatar">
+          <button type="button" class="popup__close"></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form" name="avatar_edit" novalidate>
+            <input
+              type="url"
+              name="link"
+              class="popup__input popup__input_type_url"
+              id="type_url-input"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="popup__input-error type_url-input-error"></span>
+            <button type="submit" class="button popup__button">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <!--Относится к реализации 4-го спринта-->
@@ -122,11 +148,17 @@
       <!--Про тег темплейт студенты узнают из уроков 4-го спринта-->
       <li class="places__item card">
         <img class="card__image" src="" alt="" />
-        <button type="button" class="card__delete-button"></button>
+        <button
+          type="button"
+          class="card__delete-button card__delete-button-unactive"
+        ></button>
         <!--Фоновое, инлайном-->
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
+          <div class="card__like-cover">
+            <button type="button" class="card__like-button"></button>
+            <span class="card__like-count">0</span>
+          </div>
         </div>
       </li>
     </template>

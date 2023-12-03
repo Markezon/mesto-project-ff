@@ -7,3 +7,32 @@
 .card__image:hover {
   cursor: pointer;
 }
+
+.profile__image_cover {
+  inline-size: fit-content;
+  block-size: fit-content;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__image_cover:hover .profile__image-overlay {
+  visibility: initial;
+  opacity: 1;
+  transition: visibility 0.4s, opacity 0.4s;
+}
+
+.profile__image-overlay {
+  position: absolute;
+  inline-size: 120px;
+  block-size: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/edit-avatar-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26px;
+
+  font-family: inherit;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.4s;
+}

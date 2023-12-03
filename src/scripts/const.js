@@ -27,6 +27,7 @@ export const profileTitle = document.querySelector(".profile__title");
 export const profileDescription = document.querySelector(
   ".profile__description"
 );
+export const profileImage = document.querySelector(".profile__image");
 //add card
 export const formNewCard = document.querySelector(".popup__new-card");
 export const newCardNameInput = formNewCard.querySelector(
@@ -45,3 +46,10 @@ export const validationConfig = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
+
+//avatar
+export const popupAvatarForm = document.forms["avatar_edit"];
+export const avatarEditBtn = document.querySelector(".profile__image_cover");
+export const popupAvatar = document.querySelector(".popup_type_avatar");
+
+///popup delete confirm
