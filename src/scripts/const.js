@@ -51,5 +51,3 @@ export const validationConfig = {
 export const popupAvatarForm = document.forms["avatar_edit"];
 export const avatarEditBtn = document.querySelector(".profile__image_cover");
 export const popupAvatar = document.querySelector(".popup_type_avatar");
-
-///popup delete confirm

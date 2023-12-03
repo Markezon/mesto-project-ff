@@ -145,7 +145,7 @@ function cleanNewCardInputs() {
 /////////////////Добавление новой карточки на сервер///////////////////
 const handleNewCardFormSubmit = async (evt) => {
   evt.preventDefault();
-  renderLoading(true, formProfileElement.querySelector(".popup__button"));
+  showLoadingBtn(true, formProfileElement.querySelector(".popup__button"));
   const newCard = {
     name: newCardNameInput.value,
     link: newCardUrlInput.value,
@@ -161,7 +161,7 @@ const handleNewCardFormSubmit = async (evt) => {
       console.log(err);
     })
     .finally(() => {
-      renderLoading(false, formProfileElement.querySelector(".popup__button"));
+      showLoadingBtn(false, formProfileElement.querySelector(".popup__button"));
     });
 };
 
@@ -170,7 +170,7 @@ formNewCard.addEventListener("submit", (evt) => handleNewCardFormSubmit(evt));
 /////
 
 //////button loading пока данные загружаются
-const renderLoading = (isLoading, button) => {
+const showLoadingBtn = (isLoading, button) => {
   button.textContent = isLoading ? "Сохранение..." : "Сохранить";
 };
 
@@ -178,7 +178,7 @@ const renderLoading = (isLoading, button) => {
 
 const handleProfileFormSubmit = async (evt) => {
   evt.preventDefault();
-  renderLoading(true, formProfileElement.querySelector(".popup__button"));
+  showLoadingBtn(true, formProfileElement.querySelector(".popup__button"));
 
   reNewUserProfile({
     name: formProfileElement.name.value,
@@ -193,7 +193,7 @@ const handleProfileFormSubmit = async (evt) => {
       console.log(err);
     })
     .finally(() => {
-      renderLoading(false, formProfileElement.querySelector(".popup__button"));
+      showLoadingBtn(false, formProfileElement.querySelector(".popup__button"));
     });
 };
 
@@ -208,7 +208,7 @@ avatarEditBtn.addEventListener("click", () => {
 const handleAvatarFormSubmit = async (evt) => {
   evt.preventDefault();
 
-  renderLoading(true, popupAvatarForm.querySelector(".popup__button"));
+  showLoadingBtn(true, popupAvatarForm.querySelector(".popup__button"));
 
   updateNewAvatar(popupAvatarForm.link.value)
     .then((newProfile) => {
@@ -220,7 +220,7 @@ const handleAvatarFormSubmit = async (evt) => {
       console.log(err);
     })
     .finally(() => {
-      renderLoading(false, popupAvatarForm.querySelector(".popup__button"));
+      showLoadingBtn(false, popupAvatarForm.querySelector(".popup__button"));
     });
 };
 
