@@ -17,3 +17,12 @@
     padding: 30px 20px;
   }
 }
+
+.popup__delete {
+  min-height: 180px;
+}
+
+.popup__avatar {
+  min-height: 180px;
+}
+

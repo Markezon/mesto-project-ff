@@ -14,26 +14,30 @@
       <header class="header page__section">
         <img
           src="<%=require('./images/logo.svg')%>"
-          alt="Логотип проекта масто"
+          alt="Логотип проекта место"
           class="logo header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <!--           <div
-            class="profile__image"
-            style="background-image: url('<%=require('./images/avatar.jpg')%>')"
-          ></div> -->
           <div class="profile__image_cover">
             <div class="profile__image-overlay"></div>
             <div class="profile__image"></div>
           </div>
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description">Исследователь океана</p>
+            <h1 class="profile__title"></h1>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="Редактировать"
+            ></button>
+            <p class="profile__description"></p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="Добавить новую карточку"
+          ></button>
         </section>
         <section class="places page__section">
           <ul class="places__list"></ul>
@@ -43,8 +47,12 @@
         <p class="footer__copyright">© 2023 Mesto Russia</p>
       </footer>
       <div class="popup popup_type_edit">
-        <div class="popup__content">
-          <button type="button" class="popup__close"></button>
+        <div class="popup__content popup-edit-profile">
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="edit-profile" novalidate>
             <input
@@ -73,7 +81,7 @@
               data-error-message="Разрешены только латинские и кириллические буквы, знаки дефиса и пробелы."
             />
             <span class="popup__input-error description-input-error"></span>
-            <button type="submit" class="button popup__button">
+            <button type="submit" class="button popup__button button22234">
               Сохранить
             </button>
           </form>
@@ -82,7 +90,11 @@
 
       <div class="popup popup_type_new-card">
         <div class="popup__content popup__new-card">
-          <button type="button" class="popup__close"></button>
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form" novalidate name="new-place">
             <input
@@ -123,7 +135,11 @@
 
       <div class="popup popup_type_avatar">
         <div class="popup__content popup__avatar">
-          <button type="button" class="popup__close"></button>
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
           <h3 class="popup__title">Обновить аватар</h3>
           <form class="popup__form" name="avatar_edit" novalidate>
             <input
@@ -141,6 +157,20 @@
           </form>
         </div>
       </div>
+
+      <div class="popup popup_type_delete">
+        <div class="popup__content popup__delete">
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
+          <h3 class="popup__title">Вы уверены?</h3>
+          <form class="popup__form" name="delete-card">
+            <button type="submit" class="button popup__button">Да</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <!--Относится к реализации 4-го спринта-->
@@ -151,12 +181,17 @@
         <button
           type="button"
           class="card__delete-button card__delete-button-unactive"
+          aria-label="удалить карточку"
         ></button>
         <!--Фоновое, инлайном-->
         <div class="card__description">
           <h2 class="card__title"></h2>
           <div class="card__like-cover">
-            <button type="button" class="card__like-button"></button>
+            <button
+              type="button"
+              class="card__like-button"
+              aria-label="Лайкнуть"
+            ></button>
             <span class="card__like-count">0</span>
           </div>
         </div>

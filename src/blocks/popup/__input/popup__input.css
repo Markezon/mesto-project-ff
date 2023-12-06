@@ -32,7 +32,6 @@
   line-height: normal;
   min-height: 30px;
   margin-top: 5px;
-  margin-bottom: 10px;
 }
 
 .popup__input-error:last-of-type {
@@ -41,6 +40,10 @@
 
 .popup__error_visible {
   display: block;
+}
+
+.popup__content.popup__avatar .popup__input {
+  margin-top: 9px;
 }
 
 @media screen and (max-width: 568px) {
