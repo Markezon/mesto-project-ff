@@ -51,16 +51,16 @@ export function createCard(
   cardImage.addEventListener("click", showImgPopup);
 
   /// проверка на авторство карточки
-  if (card.owner._id == profileId) {
-    deleteButton.classList.remove("card__delete-button-unactive");
+  if (card.owner._id !== profileId) {
+    deleteButton.classList.add("card__delete-button-unactive");
+  } else {
+    /// Удаление карточки
+    deleteButton.addEventListener("click", () => {
+      currentCardId = cardId;
+      currentDeleteButton = deleteButton;
+      openDeletePopup();
+    });
   }
-
-  /// Удаление карточки
-  deleteButton.addEventListener("click", () => {
-    currentCardId = cardId;
-    currentDeleteButton = deleteButton;
-    openDeletePopup();
-  });
 
   return cardElement;
 }
@@ -68,3 +68,4 @@ export function createCard(
 export function getCardForDeletion() {
   return { cardId: currentCardId, deleteButton: currentDeleteButton };
 }
+
