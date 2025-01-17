@@ -1,7 +1,21 @@
-# Проектная работа Mesto
+## The project can be viewed by following the [link]( https://mesto.khudorenko.com/)
 
-https://github.com/Markezon/mesto-project-ff
+# Project Work: "Mesto"  
+An interactive page with features to add photos, delete them, and like them.
 
-# ссылка на github-pages
+#### **Technologies Used:**
 
-https://markezon.github.io/mesto-project-ff/
+-   **HTML**
+-   **CSS**
+-   **JavaScript (JS)**
+-   **Webpack**
+
+#### **Project Goals:**
+
+-   Practicing working with events in JavaScript
+-   Practicing DOM manipulation
+-   Practicing working with arrays, loops, functions, and objects
+-   Practicing Webpack configuration
+-   Practicing making server requests
+-   Practicing working with forms
+-   Practicing creating and managing modal windows
